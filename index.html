@@ -895,15 +895,15 @@
 
 
 
-    // Add click events to timeline items to make them collapsible (crucial for mobile touch)
-    document.addEventListener("DOMContentLoaded", function() {
+    // Add click events to timeline items immediately (avoiding DOMContentLoaded race conditions)
+    (function() {
       var items = document.querySelectorAll(".timeline-item");
       items.forEach(function(item) {
         item.addEventListener("click", function() {
           this.classList.toggle("active");
         });
       });
-    });
+    })();
   </script>
 </body>
 </html>
