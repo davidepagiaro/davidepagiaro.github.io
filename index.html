@@ -474,6 +474,95 @@
         padding: 12px;
       }
     }
+
+    /* Connected Timeline with Hover Action */
+    #esperienze {
+      padding-left: 10px;
+      position: relative;
+    }
+    
+    .timeline-item {
+      position: relative;
+      padding-left: 26px;
+      border-left: 2px solid rgba(56, 189, 248, 0.3);
+      margin-bottom: 0px; /* Connect items seamlessly */
+      padding-top: 12px;
+      padding-bottom: 12px;
+      transition: all 0.2s ease;
+    }
+    
+    .timeline-item:last-child {
+      border-left: 2px solid transparent;
+      padding-bottom: 0px;
+    }
+    
+    /* Top line connector for the last item to stop at the dot */
+    .timeline-item:last-child::before {
+      content: '';
+      position: absolute;
+      left: -2px;
+      top: 0;
+      height: 17px; /* height to meet the center of the dot */
+      border-left: 2px solid rgba(56, 189, 248, 0.3);
+    }
+    
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      left: -6px;
+      top: 17px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #38bdf8;
+      border: 2px solid #0f172a;
+      transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      z-index: 2;
+    }
+    
+    .timeline-item:hover::after {
+      background: #ffffff;
+      transform: scale(1.3);
+      box-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
+    }
+    
+    .timeline-item .time-title {
+      font-size: 16px;
+      color: #38bdf8;
+      font-weight: 700;
+      margin-bottom: 4px;
+      transition: color 0.2s ease;
+    }
+    
+    .timeline-item:hover .time-title {
+      color: #ffffff;
+    }
+    
+    .timeline-item .time-subtitle {
+      font-size: 13.5px;
+      color: #94a3b8;
+      font-weight: 500;
+      margin-bottom: 0px;
+    }
+    
+    .timeline-item .time-desc {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s cubic-bezier(0, 1, 0, 1), opacity 0.3s ease, margin-top 0.3s ease;
+      margin-top: 0;
+      font-size: 14.5px;
+      color: #cbd5e1;
+      line-height: 1.5;
+      text-align: left !important;
+    }
+    
+    .timeline-item:hover .time-desc {
+      max-height: 800px;
+      opacity: 1;
+      margin-top: 10px;
+      transition: max-height 0.4s cubic-bezier(1, 0, 1, 0), opacity 0.3s ease, margin-top 0.3s ease;
+    }
   </style>
 </head>
 <body>
@@ -545,65 +634,66 @@
         
         <!-- Tab 1: Esperienze -->
         <div id="esperienze" class="tab-pane active">
+          <p style="font-size: 13.5px; color: #94a3b8; margin-bottom: 15px; font-style: italic;">Passa con il mouse su un'esperienza per visualizzarne i dettagli.</p>
           
-          <!-- 1. Completed -->
+          <!-- 1. Fondazione Porto dei Piccoli (2025 - 2026) -->
           <div class="timeline-item">
             <h4 class="time-title">Project Manager Bandi & Fundraising</h4>
             <div class="time-subtitle">Fondazione Porto dei Piccoli | 2025 - 2026</div>
-            <p class="time-desc">Mi sono occupato del monitoraggio e della redazione di proposte progettuali per bandi e laboratori dedicati. Ho coordinato le campagne di raccolta fondi, curando il piano marketing, il piano editoriale (PED) per la promozione social e le relazioni con i principali donatori, oltre a partecipare attivamente agli eventi istituzionali di fundraising.</p>
+            <p class="time-desc">Monitoraggio, partecipazione e progettazione di bandi e laboratori, coordinamento delle campagne di raccolta fondi, curando il piano marketing e il PED, promozione social e cura delle relazioni con i principali donors, oltre a partecipare attivamente agli eventi istituzionali di fundraising.</p>
           </div>
           
-          <!-- 2. Completed -->
+          <!-- 2. JB Broker, AXA (2021 - 2025) -->
           <div class="timeline-item">
             <h4 class="time-title">Consulente Assicurativo - Broker - Commerciale</h4>
             <div class="time-subtitle">JB Broker, AXA | 2021 - 2025</div>
-            <p class="time-desc">Ho evoluto il mio percorso da agente monomandatario a broker assicurativo occupandomi della consulenza strategica, della gestione del portafoglio clienti e dell'ottimizzazione delle relazioni commerciali finalizzate alla fidelizzazione.</p>
+            <p class="time-desc">Gestione strategica del portafoglio clienti in regime di Partita IVA, evolvendo il percorso professionale da agente monomandatario a broker assicurativo. Responsabile dello sviluppo commerciale, della negoziazione di contratti complessi e dell'ottimizzazione delle relazioni a lungo termine per la fidelizzazione del parco clienti.</p>
           </div>
           
-          <!-- 3. Completed -->
+          <!-- 3. EventStudio (2019 - 2020) -->
           <div class="timeline-item">
-            <h4 class="time-title">Event Designer & Logistics Assistant</h4>
+            <h4 class="time-title">Event Designer & Project Coordinator</h4>
             <div class="time-subtitle">EventStudio (Savona / Genova) | 2019 - 2020</div>
-            <p class="time-desc">Mi sono occupato del monitoraggio e del reperimento fondi tramite bandi comunali, regionali, europei e privati, curandone la progettazione. Ho gestito il progetto a 360 gradi: dalla pianificazione del layout, agli aspetti logistici e al coordinamento delle squadre di allestimento, fino alla stesura di report, rendicontazione e bilanci finali.</p>
+            <p class="time-desc">Coordinatore logistico ed Event Designer dedicato al monitoraggio e reperimento fondi tramite bandi comunali, regionali ed europei. Gestisco i progetti dall'ideazione del layout planimetrico al coordinamento sul campo delle squadre di allestimento, fino alla stesura dei report operativi e della rendicontazione economica finale.</p>
           </div>
 
-          <!-- 4. Active -->
+          <!-- 4. A.S.D. San Giorgio (2015 - OGGI) -->
           <div class="timeline-item">
             <h4 class="time-title">Presidente, Co-fondatore & Istruttore Nazionale CONI</h4>
-            <div class="time-subtitle">A.S.D. San Giorgio, Aquila Ferox, Ars Genova | 2015 - OGGI</div>
-            <p class="time-desc">Co-fondatore e Presidente di diverse associazioni, gestisco la realizzazione e la logistica di spettacoli, eventi e tornei di livello internazionale. Dirigo il fundraising strategico e la ricerca di sponsor per il finanziamento delle attività associative, coordinando il settore giovanile come tecnico-istruttore certificato CONI.</p>
+            <div class="time-subtitle">A.S.D. San Giorgio, A.S.D. Aquila Ferox, A.C. Ars Genova | 2015 - OGGI</div>
+            <p class="time-desc">Co-fondatore e Presidente di diverse associazioni, gestisco la realizzazione e la logistica di spettacoli, eventi e tornei di livello internazionale. Dirigo il fundraising strategico e la ricerca sponsor per il finanziamento delle attività associative, coordinando il settore giovanile come tecnico-istruttore certificato CONI.</p>
           </div>
           
-          <!-- 5. Active -->
+          <!-- 5. Solidarietà e Lavoro (2015 - 2021) - RETAINED AND END DATE CORRECTED -->
+          <div class="timeline-item">
+            <h4 class="time-title">Operatore Museale, Assistenza al Pubblico, Front-Office, Back-Office</h4>
+            <div class="time-subtitle">Solidarietà e Lavoro, Museo Valle Scrivia, UniGe | 2015 - 2021</div>
+            <p class="time-desc">Mi sono occupato del front-office, dell'accoglienza del pubblico e della segreteria tecnica, gestendo l'informatizzazione dell'archivio antincendio di UniGe. In collaborazione con la direzione e la rete associativa, ho inoltre progettato laboratori didattici e l'intera cartellonistica museale, sviluppandone contenuti e veste grafica.</p>
+          </div>
+
+          <!-- 6. Comune di Genova (2015 - 2016) -->
+          <div class="timeline-item">
+            <h4 class="time-title">Project Management Assistant</h4>
+            <div class="time-subtitle">Comune di Genova | Servizio Civile Nazionale | 2015 - 2016</div>
+            <p class="time-desc">Progettazione strategica, ideazione e coordinamento del piano di recupero, riqualificazione e valorizzazione del parco urbano (“Progetto Levante”). Sviluppo dell'identità del sito, della promozione e del percorso di visite guidate, con creazione della cartellonistica e del logo ufficiale adottato dal Comune.</p>
+          </div>
+
+          <!-- 7. Physique Security (2014 - OGGI) -->
           <div class="timeline-item">
             <h4 class="time-title">Operatore e Responsabile del Personale di Sicurezza</h4>
             <div class="time-subtitle">Physique Security, Agenzia 3S | 2014 - OGGI</div>
             <p class="time-desc">Ho operato come responsabile della sicurezza per locali, concerti e grandi eventi in contesti ad alto rischio. Ad oggi mi occupo del reclutamento e del coordinamento del personale, della gestione dei flussi e dell'attuazione operativa dei piani di sicurezza.</p>
           </div>
           
-          <!-- 6. Active -->
+          <!-- 8. Festival della Scienza (2008 - OGGI) -->
           <div class="timeline-item">
-            <h4 class="time-title">Ideatore di Laboratori, Divulgatore Scientifico e Referente Logistico</h4>
+            <h4 class="time-title">Animatore, Animatore Scientifico, Runner e Proponente</h4>
             <div class="time-subtitle">Associazione Festival della Scienza (Genova) | 2008 - OGGI</div>
             <p class="time-desc">All'interno del Festival ho compiuto un percorso di crescita costante, partendo dall'accoglienza fino alla divulgazione scientifica e all'ideazione autonoma di laboratori. Dal 2012 ricopro un ruolo attivo nella logistica, lavorando a stretto contatto con il referente per il pre-allestimento di Piazza delle Feste, curando il montaggio, lo smontaggio e la gestione degli spazi. Grazie a spiccate capacità relazionali, assicuro un'efficace interazione con il pubblico e un fluido coordinamento con i diversi operatori dei laboratori, risolvendo tempestivamente ogni imprevisto sul campo.</p>
           </div>
-
-          <!-- 7. Concluded Dates Corrected -->
-          <div class="timeline-item">
-            <h4 class="time-title">Operatore Museale, Assistenza al Pubblico, Front-Office, Back-Office</h4>
-            <div class="time-subtitle">Solidarietà e Lavoro, Museo Valle Scrivia, UniGe | 2015 - OGGI</div>
-            <p class="time-desc">Mi sono occupato del front-office, dell'accoglienza del pubblico e della segreteria tecnica, gestendo l'informatizzazione dell'archivio antincendio di UniGe. In collaborazione con la direzione e la rete associativa, ho inoltre progettato laboratori didattici e l'intera cartellonistica museale, sviluppandone contenuti e veste grafica.</p>
-          </div>
-          
-          <!-- 8. Completed -->
-          <div class="timeline-item">
-            <h4 class="time-title">Project Management Assistant</h4>
-            <div class="time-subtitle">Comune di Genova - Ufficio Tecnico di Progettazione Municipio Levante | SERVIZIO CIVILE | 2015 - 2016</div>
-            <p class="time-desc">Mi sono occupato della progettazione strategica, dell'ideazione e del coordinamento del piano di recupero, riqualificazione e valorizzazione del parco urbano (“Progetto Levante”). Ho sviluppato l'identità del sito, curato la promozione e il percorso di visite guidate, realizzando la cartellonistica e il logo ufficiale adottato dal Comune.</p>
-          </div>
           
         </div>
-
+        
         <!-- Tab 2: Competenze & Soft Skills -->
         <div id="competenze" class="tab-pane">
           <div class="skills-grid">
@@ -751,7 +841,7 @@
 
     <!-- Call to Action: Download PDF CV -->
     <div class="cta-container">
-      <a href="./curriculum_davide_pagiaro_1pagina.pdf" target="_blank" class="download-btn">
+      <a href="./CV%204.5.pdf" target="_blank" class="download-btn">
         <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
         Scarica il CV Completo (PDF)
       </a>
@@ -778,6 +868,8 @@
       document.getElementById(tabName).classList.add("active");
       evt.currentTarget.classList.add("active");
     }
+
+
   </script>
 </body>
 </html>
