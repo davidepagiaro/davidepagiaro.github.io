@@ -475,7 +475,7 @@
       }
     }
 
-    /* Connected Timeline with Hover Action */
+    /* Connected Timeline with Hover & Mobile Touch support */
     #esperienze {
       padding-left: 10px;
       position: relative;
@@ -485,10 +485,11 @@
       position: relative;
       padding-left: 26px;
       border-left: 2px solid rgba(56, 189, 248, 0.3);
-      margin-bottom: 0px; /* Connect items seamlessly */
+      margin-bottom: 0px;
       padding-top: 12px;
       padding-bottom: 12px;
       transition: all 0.2s ease;
+      cursor: pointer;
     }
     
     .timeline-item:last-child {
@@ -496,13 +497,12 @@
       padding-bottom: 0px;
     }
     
-    /* Top line connector for the last item to stop at the dot */
     .timeline-item:last-child::before {
       content: '';
       position: absolute;
       left: -2px;
       top: 0;
-      height: 17px; /* height to meet the center of the dot */
+      height: 17px;
       border-left: 2px solid rgba(56, 189, 248, 0.3);
     }
     
@@ -520,10 +520,27 @@
       z-index: 2;
     }
     
-    .timeline-item:hover::after {
+    /* Hover effects for Desktop only */
+    @media (hover: hover) {
+      .timeline-item:hover::after {
+        background: #ffffff;
+        transform: scale(1.3);
+        box-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
+      }
+      .timeline-item:hover .time-title {
+        color: #ffffff;
+      }
+    }
+    
+    /* Click/Active state (works on both Mobile touch and Desktop click) */
+    .timeline-item.active::after {
       background: #ffffff;
       transform: scale(1.3);
       box-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
+    }
+    
+    .timeline-item.active .time-title {
+      color: #ffffff;
     }
     
     .timeline-item .time-title {
@@ -532,10 +549,6 @@
       font-weight: 700;
       margin-bottom: 4px;
       transition: color 0.2s ease;
-    }
-    
-    .timeline-item:hover .time-title {
-      color: #ffffff;
     }
     
     .timeline-item .time-subtitle {
@@ -557,7 +570,18 @@
       text-align: left !important;
     }
     
-    .timeline-item:hover .time-desc {
+    /* Expand on Hover (Desktop) */
+    @media (hover: hover) {
+      .timeline-item:hover .time-desc {
+        max-height: 800px;
+        opacity: 1;
+        margin-top: 10px;
+        transition: max-height 0.4s cubic-bezier(1, 0, 1, 0), opacity 0.3s ease, margin-top 0.3s ease;
+      }
+    }
+    
+    /* Expand on Click (Mobile & Desktop) */
+    .timeline-item.active .time-desc {
       max-height: 800px;
       opacity: 1;
       margin-top: 10px;
@@ -634,7 +658,7 @@
         
         <!-- Tab 1: Esperienze -->
         <div id="esperienze" class="tab-pane active">
-          <p style="font-size: 13.5px; color: #94a3b8; margin-bottom: 15px; font-style: italic;">Passa con il mouse su un'esperienza per visualizzarne i dettagli.</p>
+          <p style="font-size: 13.5px; color: #94a3b8; margin-bottom: 15px; font-style: italic;">Passa il mouse (Desktop) o tocca (Mobile) un'esperienza per vederne i dettagli.</p>
           
           <!-- 1. Fondazione Porto dei Piccoli (2025 - 2026) -->
           <div class="timeline-item">
@@ -870,6 +894,16 @@
     }
 
 
+
+    // Add click events to timeline items to make them collapsible (crucial for mobile touch)
+    document.addEventListener("DOMContentLoaded", function() {
+      var items = document.querySelectorAll(".timeline-item");
+      items.forEach(function(item) {
+        item.addEventListener("click", function() {
+          this.classList.toggle("active");
+        });
+      });
+    });
   </script>
 </body>
 </html>
